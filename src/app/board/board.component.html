@@ -1,1 +1,6 @@
-<p>board works!</p>
+<app-column [tasks]=leftCol name='To do' (dragged)="handleEvent($event)">
+</app-column>
+<app-column [tasks]=centerCol name='In progress'
+    (dragged)="handleEvent($event)"></app-column>
+<app-column [tasks]=rightCol name='Done' (dragged)="handleEvent($event)">
+</app-column>

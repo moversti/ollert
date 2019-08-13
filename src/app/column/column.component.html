@@ -1,1 +1,6 @@
-<p>column works!</p>
+<h3>{{name}}</h3>
+
+<div *ngFor="let task of tasks" cdkDropList (cdkDropListDropped)="drop($event)">
+    <!-- <app-task [task]=task cdkDrag></app-task> -->
+    <div cdkDrag>{{task.text}}</div>
+</div>

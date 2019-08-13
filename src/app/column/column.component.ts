@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Task } from '../task';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-column',
@@ -7,9 +9,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColumnComponent implements OnInit {
 
+  @Input() tasks: Task[];
+  @Input() name: string;
+  @Output() dragged = new EventEmitter<string>();
+
   constructor() { }
 
   ngOnInit() {
   }
 
+  drop(event: CdkDragDrop<string[]>) {
+    console.log('got event in column');
+    this.dragged.emit('kek');
+    // moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+  }
 }
