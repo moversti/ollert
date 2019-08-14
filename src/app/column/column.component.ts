@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../task';
-import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-column',
@@ -21,8 +21,14 @@ export class ColumnComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<string[]>) {
-    console.log('got event in column');
-    this.dragged.emit('kek');
-    // moveItemInArray(this.tasks, event.previousIndex, event.currentIndex);
+    // Not working, handle in parent or use service
+    if (event.previousContainer === event.container) {
+      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    } else {
+      transferArrayItem(event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 }

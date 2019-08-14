@@ -3,6 +3,6 @@
 <div [id]='listId' cdkDropList [cdkDropListConnectedTo]="dropLists"
     (cdkDropListDropped)="drop($event)">
     <div *ngFor="let task of tasks" cdkDrag>
-        {{task.text}}
+        <app-task [task]='task'></app-task>
     </div>
 </div>
