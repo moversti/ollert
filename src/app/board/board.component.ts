@@ -9,6 +9,8 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 })
 export class BoardComponent implements OnInit {
 
+  dropLists = ['leftCol', 'centerCol', 'rightCol'];
+
   leftCol: Task[] = [new Task('asd'), new Task('fgh')];
   centerCol: Task[] = [new Task('fgh'), new Task('jkl')];
   rightCol: Task[] = [new Task('jkl'), new Task('asd')];

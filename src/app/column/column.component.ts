@@ -11,6 +11,8 @@ export class ColumnComponent implements OnInit {
 
   @Input() tasks: Task[];
   @Input() name: string;
+  @Input() dropLists: string[];
+  @Input() listId: string;
   @Output() dragged = new EventEmitter<string>();
 
   constructor() { }
