@@ -5,7 +5,10 @@
     <div *ngFor="let task of tasks" cdkDrag>
         <app-task [task]='task'></app-task>
     </div>
-    <button mat-icon-button color='accent'>
+    <button *ngIf='!adding' mat-icon-button color='accent'
+        (click)='openAdding()'>
         <mat-icon svgIcon='add'></mat-icon>
     </button>
+    <textarea (keydown)='checkIfEnter($event)' *ngIf='adding'
+        placeholder="new task" appAutofocus></textarea>
 </div>

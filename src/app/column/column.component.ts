@@ -15,6 +15,8 @@ export class ColumnComponent implements OnInit {
   @Input() listId: string;
   @Output() dragged = new EventEmitter<string>();
 
+  adding = false;
+
   constructor() { }
 
   ngOnInit() {
@@ -30,5 +32,18 @@ export class ColumnComponent implements OnInit {
     //     event.previousIndex,
     //     event.currentIndex);
     // }
+  }
+
+  openAdding() {
+    this.adding = true;
+  }
+  closeAdding() {
+    this.adding = false;
+  }
+
+  checkIfEnter(event: KeyboardEvent) {
+    if (event.key === 'Enter' && !event.shiftKey) {
+      this.closeAdding();
+    }
   }
 }
