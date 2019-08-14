@@ -1,1 +1,8 @@
-<mat-card class="task">{{task.text}}</mat-card>
+<mat-card *ngIf='!editing' class="task">
+    <div (click)='openEdit()'>
+        {{task.text}}
+    </div>
+</mat-card>
+<mat-card *ngIf='editing' class="task"><textarea #editField
+        (keydown)='checkIfEnter($event)' type='text' [value]='task.text' appAutofocus ></textarea>
+</mat-card>
