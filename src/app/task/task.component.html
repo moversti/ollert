@@ -1,9 +1,18 @@
 <mat-card *ngIf='!editing' class="task" (mouseover)='showDelete()'
     (mouseout)='hideDelete()'>
+
+    <!-- <button *ngIf='!adding' mat-icon-button color='accent'
+    (click)='openAdding()'>
+    <mat-icon svgIcon='add'></mat-icon>
+</button> -->
+
     <button #delete [style.display]="hovering ? 'inline' : 'none'"
-        class="taskDeleteButton" mat-mini-fab
-        color='warn'>X</button>
-    <div (click)='openEdit()'>
+        class="task-delete-button" mat-icon-button color='warn'>
+        <mat-icon svgIcon='delete'></mat-icon>
+    </button>
+
+
+    <div class="task-content" (click)='openEdit()'>
         {{task.text}}
     </div>
 

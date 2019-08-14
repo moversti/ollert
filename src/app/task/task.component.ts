@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Task } from '../task';
+import { EnterCheckerService } from '../enter-checker.service';
 
 @Component({
   selector: 'app-task',
@@ -14,7 +15,7 @@ export class TaskComponent implements OnInit {
 
   @ViewChild('delete', { static: false }) delete: ElementRef;
 
-  constructor() { }
+  constructor(private ecs: EnterCheckerService) { }
 
   ngOnInit() {
   }
@@ -29,7 +30,7 @@ export class TaskComponent implements OnInit {
   }
 
   checkIfEnter(event: KeyboardEvent) {
-    if (event.key === 'Enter' && !event.shiftKey) {
+    if (this.ecs.checkEnter(event)) {
       this.closeEdit();
     }
   }

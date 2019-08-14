@@ -12,6 +12,8 @@ export class AppComponent {
   constructor(private mir: MatIconRegistry, sanitizer: DomSanitizer) {
     mir.addSvgIcon('add',
       sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-add_box-24px.svg'));
+    mir.addSvgIcon('delete',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/baseline-delete-24px.svg'));
   }
   title = 'ollert';
 }

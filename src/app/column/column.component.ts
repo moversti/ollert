@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Task } from '../task';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { EnterCheckerService } from '../enter-checker.service';
 
 @Component({
   selector: 'app-column',
@@ -18,7 +19,7 @@ export class ColumnComponent implements OnInit {
 
   adding = false;
 
-  constructor() { }
+  constructor(private ecs: EnterCheckerService) { }
 
   ngOnInit() {
   }
@@ -44,7 +45,7 @@ export class ColumnComponent implements OnInit {
   }
 
   checkIfEnter(event: KeyboardEvent) {
-    if (event.key === 'Enter' && !event.shiftKey) {
+    if (this.ecs.checkEnter(event)) {
       this.closeAdding();
     }
   }

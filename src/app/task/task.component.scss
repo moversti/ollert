@@ -1,11 +1,33 @@
 .task{
-    background-color: lightblue;
+    background-color: hsl(195, 70%, 70%);
     margin: 0 0 10px 0;
     overflow: visible;
+    font-size: 2rem;
+    width: 300px;
+    color: white;
+
 }
-.taskDeleteButton{
+.mat-card{
+    padding: 0;
+}
+.task-delete-button{
     top: -20px;
     left: -20px;
     position: absolute;
     display: none;
+}
+.task-content{
+    padding: 16px;
+}
+textarea{
+    background: transparent;
+    // resize: none;
+    overflow: auto;
+    border: 0 none;
+    outline: none;
+    font-family: sans-serif;
+    font-size: 2rem;
+    width:300px;
+    color: black;
+    height: 100%;
 }
