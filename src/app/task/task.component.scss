@@ -1,4 +1,11 @@
 .task{
     background-color: lightblue;
-    margin: 0 0 10px 0
+    margin: 0 0 10px 0;
+    overflow: visible;
+}
+.taskDeleteButton{
+    top: -20px;
+    left: -20px;
+    position: absolute;
+    display: none;
 }

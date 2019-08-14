@@ -9,7 +9,10 @@ import { Task } from '../task';
 export class TaskComponent implements OnInit {
   @Input() task: Task;
   editing = false;
+  hovering = false;
   @ViewChild('editField', { static: false }) editField: ElementRef;
+
+  @ViewChild('delete', { static: false }) delete: ElementRef;
 
   constructor() { }
 
@@ -29,6 +32,14 @@ export class TaskComponent implements OnInit {
     if (event.key === 'Enter' && !event.shiftKey) {
       this.closeEdit();
     }
+  }
+
+  showDelete() {
+    this.hovering = true;
+  }
+
+  hideDelete() {
+    this.hovering = false;
   }
 
 }

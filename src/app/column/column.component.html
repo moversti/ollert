@@ -9,6 +9,6 @@
         (click)='openAdding()'>
         <mat-icon svgIcon='add'></mat-icon>
     </button>
-    <textarea (keydown)='checkIfEnter($event)' *ngIf='adding'
+    <textarea #addField (keydown)='checkIfEnter($event)' *ngIf='adding'
         placeholder="new task" appAutofocus></textarea>
 </div>

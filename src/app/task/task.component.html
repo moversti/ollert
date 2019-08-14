@@ -1,8 +1,17 @@
-<mat-card *ngIf='!editing' class="task">
+<mat-card *ngIf='!editing' class="task" (mouseover)='showDelete()'
+    (mouseout)='hideDelete()'>
+    <button #delete [style.display]="hovering ? 'inline' : 'none'"
+        class="taskDeleteButton" mat-mini-fab
+        color='warn'>X</button>
     <div (click)='openEdit()'>
         {{task.text}}
     </div>
+
+
+
+
 </mat-card>
 <mat-card *ngIf='editing' class="task"><textarea #editField
-        (keydown)='checkIfEnter($event)' type='text' [value]='task.text' appAutofocus ></textarea>
+        (keydown)='checkIfEnter($event)' type='text' [value]='task.text'
+        appAutofocus></textarea>
 </mat-card>

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef } from '@angular/core';
 import { Task } from '../task';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 
@@ -14,6 +14,7 @@ export class ColumnComponent implements OnInit {
   @Input() dropLists: string[];
   @Input() listId: string;
   @Output() dragged = new EventEmitter<string>();
+  @ViewChild('addField', { static: false }) addField: ElementRef;
 
   adding = false;
 
@@ -38,6 +39,7 @@ export class ColumnComponent implements OnInit {
     this.adding = true;
   }
   closeAdding() {
+    console.log('TODO: Add task: \n' + this.addField.nativeElement.value);
     this.adding = false;
   }
 
