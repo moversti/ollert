@@ -22,13 +22,13 @@ export class ColumnComponent implements OnInit {
 
   drop(event: CdkDragDrop<string[]>) {
     // Not working, handle in parent or use service
-    if (event.previousContainer === event.container) {
-      moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
-    } else {
-      transferArrayItem(event.previousContainer.data,
-        event.container.data,
-        event.previousIndex,
-        event.currentIndex);
-    }
+    // if (event.previousContainer === event.container) {
+    //   moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+    // } else {
+    //   transferArrayItem(event.previousContainer.data,
+    //     event.container.data,
+    //     event.previousIndex,
+    //     event.currentIndex);
+    // }
   }
 }
