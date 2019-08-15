@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../task';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-board',
@@ -11,18 +12,17 @@ export class BoardComponent implements OnInit {
 
   dropLists = ['leftCol', 'centerCol', 'rightCol'];
 
-  leftCol: Task[] = [new Task('asd'), new Task('fgh')];
-  centerCol: Task[] = [new Task('fgh'), new Task('jkl')];
-  rightCol: Task[] = [new Task('jkl'), new Task('asd')];
+  leftCol: Task[];
+  centerCol: Task[];
+  rightCol: Task[];
 
-  constructor() { }
+  constructor(private taskService: TaskService) { }
 
   ngOnInit() {
+    this.taskService.getTasks('left').subscribe(tasks => this.leftCol = tasks);
+    this.taskService.getTasks('center').subscribe(tasks => this.centerCol = tasks);
+    this.taskService.getTasks('right').subscribe(tasks => this.rightCol = tasks);
   }
 
-  handleEvent(event) {
-    console.log('got event in board');
-    // console.log(event);
-    // moveItemInArray([], event.previousIndex, event.currentIndex);
-  }
+
 }

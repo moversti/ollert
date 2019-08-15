@@ -43,4 +43,7 @@ export class TaskComponent implements OnInit {
     this.hovering = false;
   }
 
+  handleDelete(event: MouseEvent) {
+    console.log(event.target);
+  }
 }

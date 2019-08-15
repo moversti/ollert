@@ -1,8 +1,7 @@
-<app-column [tasks]=leftCol name='To do' (dragged)="handleEvent($event)"
-    [dropLists]=dropLists listId='leftCol'>
+<app-column [tasks]=leftCol name='To do' [dropLists]=dropLists listId='leftCol'>
 </app-column>
-<app-column [tasks]=centerCol name='In progress' (dragged)="handleEvent($event)"
-    [dropLists]=dropLists listId='centerCol'></app-column>
-<app-column [tasks]=rightCol name='Done' (dragged)="handleEvent($event)"
-    [dropLists]=dropLists listId='rightCol'>
+<app-column [tasks]=centerCol name='In progress' [dropLists]=dropLists
+    listId='centerCol'></app-column>
+<app-column [tasks]=rightCol name='Done' [dropLists]=dropLists
+    listId='rightCol'>
 </app-column>

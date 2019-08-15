@@ -6,7 +6,8 @@
     <mat-icon svgIcon='add'></mat-icon>
 </button> -->
 
-    <button #delete [style.display]="hovering ? 'inline' : 'none'"
+    <button (click)="handleDelete($event)" #delete
+        [style.display]="hovering ? 'inline' : 'none'"
         class="task-delete-button" mat-icon-button color='warn'>
         <mat-icon svgIcon='delete'></mat-icon>
     </button>

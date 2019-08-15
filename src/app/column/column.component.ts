@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 import { Task } from '../task';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { EnterCheckerService } from '../enter-checker.service';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-column',
@@ -16,10 +17,13 @@ export class ColumnComponent implements OnInit {
   @Input() listId: string;
   @Output() dragged = new EventEmitter<string>();
   @ViewChild('addField', { static: false }) addField: ElementRef;
+  @ViewChild('droplist', { static: false }) droplist: ElementRef;
+
 
   adding = false;
 
-  constructor(private ecs: EnterCheckerService) { }
+
+  constructor(private ecs: EnterCheckerService, private taskService: TaskService) { }
 
   ngOnInit() {
   }
@@ -34,13 +38,26 @@ export class ColumnComponent implements OnInit {
     //     event.previousIndex,
     //     event.currentIndex);
     // }
+    if (event.previousContainer === event.container) {
+      this.taskService.moveInSameList(event.container, event.previousIndex, event.currentIndex);
+    } else {
+      this.taskService.transferToOtherList(
+        event.previousContainer,
+        event.container,
+        event.previousIndex,
+        event.currentIndex);
+    }
   }
 
   openAdding() {
     this.adding = true;
   }
   closeAdding() {
-    console.log('TODO: Add task: \n' + this.addField.nativeElement.value);
+    // TODO
+    this.tasks = [...this.tasks, new Task(this.addField.nativeElement.value)];
+    console.log(this.tasks);
+    console.log(this.taskService.centerTasks);
+
     this.adding = false;
   }
 

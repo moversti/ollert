@@ -16,6 +16,8 @@ import { BoardComponent } from './board/board.component';
 import { AutofocusDirective } from './autofocus.directive';
 // Services
 import { EnterCheckerService } from './enter-checker.service';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,7 +33,8 @@ import { EnterCheckerService } from './enter-checker.service';
     MatButtonModule,
     MatCardModule,
     DragDropModule,
-    MatIconModule
+    MatIconModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [EnterCheckerService],
   bootstrap: [AppComponent]
